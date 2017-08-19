@@ -7,20 +7,18 @@ var game = {
 	HeroSelect: false,
 	defenderSelect: false,
 
-	assignStats: function(stats, monster) {		
+	assignStats: function(stats, Heroes) {		
 
-		console.log(game.Reindhart);
+		Heroes.attr("atk", stats.attack);
+		Heroes.attr("base", stats.attack);
+		Heroes.attr("hp", stats.healthPoints);
 
-		monster.attr("atk", stats.attack);
-		monster.attr("base", stats.attack);
-		monster.attr("hp", stats.healthPoints);
-
-		console.log("Attack: " + monster.attr("atk") + " Health: " + monster.attr("hp"));
-		monster.append("<p>Attack: " + monster.attr("atk") + " Health: " + monster.attr("hp") + "</p>");
+		console.log("Attack: " + Heroes.attr("atk") + " Health: " + Heroes.attr("hp"));
+		Heroes.append("<p>Attack: " + Heroes.attr("atk") + " Health: " + Heroes.attr("hp") + "</p>");
 	},
 
-	updateStats: function(stats, monster) {
-		$(stats).text("Attack: " + monster.attr("atk") + " Health: " + monster.attr("hp"));
+	updateStats: function(stats, Heroes) {
+		$(stats).text("Attack: " + Heroes.attr("atk") + " Health: " + Heroes.attr("hp"));
 	}
 
 
@@ -43,14 +41,14 @@ $(document).on("click", "#Characters>div", function() {
 	if (game.HeroSelect == false) {
 		var selectChar = $(".character").not(this).remove();
 
-		selectChar.appendTo("#enemies");
+		selectChar.appendTo("#Villains");
 
 		game.HeroSelect = true;
 	}
 
 });
 
-$(document).on("click", "#enemies>div", function() {	
+$(document).on("click", "#Villains>div", function() {	
 
 	if (game.defenderSelect == false){
 
@@ -90,10 +88,10 @@ $(document).on("click", "#attack", function() {
 		}
 		else {
 	//The defender counterattacks, dealing damage to the player equal to the defender's counter stat
-		Characters.attr("hp", Characters.attr("hp") - Characters.attr("cAtk"));
+		Characters.attr("hp", Characters.attr("hp"));
 		game.updateStats("#Characters>div>p", Characters);
 		}
-		// $("#Characters>div>p").text("Attack: " + monster.attr("atk") + " Counter: " + monster.attr("cAtk") + " Health: " + monster.attr("hp"));
+		// $("#Characters>div>p").text("Attack: " + Heroes.attr("atk") + " Health: " + monster.attr("hp"));
 	}
 
 });
