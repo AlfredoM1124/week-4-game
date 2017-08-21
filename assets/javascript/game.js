@@ -1,3 +1,7 @@
+// Set the total score needed for victory in the game
+var targetNumber = 1500;
+$("#number-to-guess").html(targetNumber);
+// Create the characters and give them stats 
 var game = {
 	Reindhart: {attack: 50, healthPoints: 500},
 	DVa: {attack: 100, healthPoints: 300},
@@ -15,14 +19,7 @@ var game = {
 
 		console.log("Attack: " + Heroes.attr("atk") + " Health: " + Heroes.attr("hp"));
 		Heroes.append("<p>Attack: " + Heroes.attr("atk") + " Health: " + Heroes.attr("hp") + "</p>");
-	},
-
-	updateStats: function(stats, Heroes) {
-		$(stats).text("Attack: " + Heroes.attr("atk") + " Health: " + Heroes.attr("hp"));
 	}
-
-
-
 }
 
 var Rein = $("#Reindhart");
@@ -48,18 +45,6 @@ $(document).on("click", "#Characters>div", function() {
 
 });
 
-$(document).on("click", "#Villains>div", function() {	
-
-	if (game.defenderSelect == false){
-
-		var selectEnemy = $(this).remove();
-
-		selectEnemy.appendTo("#defenders");
-
-		game.defenderSelect = true;
-	}
-
-});
 
 
 //When the attack button is hit
