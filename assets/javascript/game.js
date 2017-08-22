@@ -14,15 +14,18 @@
 		Mercy: 128,
 	};
 
+	// Supposed to reset all scores to 0 besides wins and loss
 	function refreshGame() {
 		$("#pointsScored").html(pointsScored);
 		$("#endGoal").html(goal);
+		console.log(goal);
 	};
 
-	console.log("Current Goal: " + goal);
+	// Displays the goal and points scored already
+	$("#pointsScored").html(pointsScored);
 	$("#endGoal").html(goal);
-	console.log(heroes.Reindhart, heroes.DVa, heroes.McCree, heroes.Mercy);
 
+	// Individual buttons for each Hero
 	$("#Reindhart").on("click", function(event){
 		console.log("You clicked Reindhart...")
 		pointsScored += heroes.Reindhart;
@@ -57,6 +60,5 @@
 		$("#wins").html(wins);
 		refreshGame();
 	}
-	$("#pointsScored").html(pointsScored);
-	$("#endGoal").html(goal);
+
 });
